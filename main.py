@@ -44,7 +44,6 @@ def main():
     df_basePE = filtra_esfera_estadual(df_basePE)
 
     
-    #print(df_basePE)
     num_escolas = 0
     resultados_elementar = []
     resultados_basico = []
@@ -52,19 +51,15 @@ def main():
     resultado_geral = []
     resultado_nivel = []
     for codigo in df_basePE['CO_ENTIDADE']:
-            #df_basePE_amostra = filtra_escola_específica(df_basePE, escola_nome)
     
             # Processa dados
-            #df_basePE_amostra = processa_dados_agua(df_basePE_amostra)
-
-            #print(escola_nome)
             df_basePE_amostra = filtra_escola_cod(df_basePE, codigo)
              # Pivota matriz
             df_basePE_amostra = pivota_matriz(df_basePE_amostra)
             # Calcula Elementar
             ranking_elementar, elementar_notas = calcula_todas_elementar(df_basePE_amostra)
             ranking_elementar = round(ranking_elementar, 3)
-            #print(ranking_elementar)
+
             for indicador, nota in elementar_notas.items():
                 resultados_elementar.append({
                     "CO_ENTIDADE": codigo,
@@ -82,7 +77,7 @@ def main():
             # Calcula Básico
             ranking_basico, basico_notas = calcula_todas_basico(df_basePE_amostra)
             ranking_basico = round(ranking_basico, 3)
-            #print(ranking_basico)
+
             for indicador, nota in basico_notas.items():
                 resultados_basico.append({
                     "CO_ENTIDADE": codigo,
@@ -123,11 +118,6 @@ def main():
                  "NOTA_GERAL": round(nota_geral,3)
             })
 
-            
-
-            # Mostra resultados
-            #print(ranking_adequado)
-            #print('-----')
 
     tabela_escola = df_basePE[[
         'NU_ANO_CENSO', 'CO_ENTIDADE', 'NO_ENTIDADE', 'NO_UF', 
@@ -153,8 +143,6 @@ def main():
     df_resultados_adequado.to_csv('arquivos/resultados_adequado.csv', sep=';', encoding='utf-8', index=False)
     df_resultado_nivel.to_csv('arquivos/resultados_nivel.csv', sep=';', encoding='utf-8', index=False)
     df_resultado_geral.to_csv('arquivos/resultados_geral.csv', sep=';', encoding='utf-8', index=False)
-    #print(df_resultado_geral)
-    # print(tabela_escola)
 
 if __name__ == "__main__":
     main()
