@@ -1,5 +1,5 @@
 def filtra_dados_pe(df_base):
-    return df_base.query('NU_ANO_CENSO == 2023 and SG_UF == "PE"')
+    return df_base.query('SG_UF == "PE"')
 
 def filtra_esfera_estadual(df_base):
     return df_base.query('TP_DEPENDENCIA == 2')

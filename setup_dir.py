@@ -10,11 +10,11 @@ def setup_diretorio():
     if not os.path.exists(local_dir):
         os.makedirs(local_dir)
 
-    # Verifica se o arquivo já existe
-    if os.path.exists(local_file_path):
-        user_input = input(f"O arquivo '{local_file_path}' já existe. Deseja sobrescrevê-lo? (s/n): ").strip().lower()
-        if user_input != 's':
-            print("Usando o arquivo existente.")
-            return None  # Retorna None se o usuário não quiser sobrescrever
+    # Lista todos os arquivos no diretório que começam com 'microdados_ed_basica_'
+    arquivos = [
+        os.path.join(local_dir, arquivo)
+        for arquivo in os.listdir(local_dir)
+        if arquivo.startswith('microdados_ed_basica_')
+    ]
     
-    return local_file_path
+    return arquivos
