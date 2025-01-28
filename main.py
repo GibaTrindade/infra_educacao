@@ -23,6 +23,13 @@ def main():
     # Configura o diretório e obtém o caminho do arquivo
     lista_arquivos = setup_diretorio()
 
+    tabela_escola_final = pd.DataFrame()
+    df_resultados_elementar_final = pd.DataFrame()
+    df_resultados_basico_final = pd.DataFrame()
+    df_resultados_adequado_final = pd.DataFrame()
+    df_resultado_nivel_final = pd.DataFrame()
+    df_resultado_geral_final = pd.DataFrame()
+
     for local_file_path in lista_arquivos:
         # local_file_path = setup_diretorio()
         if not local_file_path:
@@ -156,12 +163,26 @@ def main():
         # print(df_resultados_basico)
         # print(df_resultados_adequado)
         # print(df_resultado_nivel)
-        tabela_escola.to_csv(f'arquivos/tabela_escola_{ano}.csv', sep=';', encoding='utf-8', index=False)
-        df_resultados_elementar.to_csv(f'arquivos/resultados_elementar_{ano}.csv', sep=';', encoding='utf-8', index=False)
-        df_resultados_basico.to_csv(f'arquivos/resultados_basico_{ano}.csv', sep=';', encoding='utf-8', index=False)
-        df_resultados_adequado.to_csv(f'arquivos/resultados_adequado_{ano}.csv', sep=';', encoding='utf-8', index=False)
-        df_resultado_nivel.to_csv(f'arquivos/resultados_nivel_{ano}.csv', sep=';', encoding='utf-8', index=False)
-        df_resultado_geral.to_csv(f'arquivos/resultados_geral_{ano}.csv', sep=';', encoding='utf-8', index=False)
+        
+        # tabela_escola.to_csv(f'arquivos/tabela_escola_{ano}.csv', sep=';', encoding='utf-8', index=False)
+        tabela_escola_final = pd.concat([tabela_escola_final, tabela_escola], ignore_index=True)
+        df_resultados_elementar_final = pd.concat([df_resultados_elementar_final, df_resultados_elementar], ignore_index=True)
+        df_resultados_basico_final = pd.concat([df_resultados_basico_final, df_resultados_basico], ignore_index=True)
+        df_resultados_adequado_final = pd.concat([df_resultados_adequado_final, df_resultados_adequado], ignore_index=True)
+        df_resultado_nivel_final = pd.concat([df_resultado_nivel_final, df_resultado_nivel], ignore_index=True)
+        df_resultado_geral_final = pd.concat([df_resultado_geral_final, df_resultado_geral], ignore_index=True)
 
+
+        # df_resultados_elementar.to_csv(f'arquivos/resultados_elementar_{ano}.csv', sep=';', encoding='utf-8', index=False)
+        # df_resultados_basico.to_csv(f'arquivos/resultados_basico_{ano}.csv', sep=';', encoding='utf-8', index=False)
+        # df_resultados_adequado.to_csv(f'arquivos/resultados_adequado_{ano}.csv', sep=';', encoding='utf-8', index=False)
+        # df_resultado_nivel.to_csv(f'arquivos/resultados_nivel_{ano}.csv', sep=';', encoding='utf-8', index=False)
+        # df_resultado_geral.to_csv(f'arquivos/resultados_geral_{ano}.csv', sep=';', encoding='utf-8', index=False)
+    tabela_escola_final.to_csv(f'arquivos/tabela_escola_final.csv', sep=';', encoding='utf-8', index=False)
+    df_resultados_elementar_final.to_csv(f'arquivos/resultados_elementar_final.csv', sep=';', encoding='utf-8', index=False)
+    df_resultados_basico_final.to_csv(f'arquivos/resultados_basico_final.csv', sep=';', encoding='utf-8', index=False)
+    df_resultados_adequado_final.to_csv(f'arquivos/resultados_adequado_final.csv', sep=';', encoding='utf-8', index=False)
+    df_resultado_nivel_final.to_csv(f'arquivos/resultados_nivel_final.csv', sep=';', encoding='utf-8', index=False)
+    df_resultado_geral_final.to_csv(f'arquivos/resultados_geral_final.csv', sep=';', encoding='utf-8', index=False)
 if __name__ == "__main__":
     main()
