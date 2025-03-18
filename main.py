@@ -148,7 +148,7 @@ def main():
         tabela_escola = df_basePE[[
             'NU_ANO_CENSO', 'CO_ENTIDADE', 'NO_ENTIDADE', 'NO_UF', 
             'SG_UF', 'CO_UF', 'NO_MUNICIPIO', 'CO_MUNICIPIO', 
-            'TP_DEPENDENCIA', 'QT_MAT_FUND_AF', 'QT_MAT_MED'
+            'TP_DEPENDENCIA', 'TP_LOCALIZACAO','QT_MAT_FUND_AF', 'QT_MAT_MED'
         ]]
 
         df_resultados_elementar = pd.DataFrame(resultados_elementar)

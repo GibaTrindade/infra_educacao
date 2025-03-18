@@ -1,7 +1,7 @@
 import pandas as pd
 
 def pivota_matriz(df):
-    info_cols = ['NU_ANO_CENSO', 'NO_UF','SG_UF','CO_UF','NO_MUNICIPIO','CO_MUNICIPIO','NO_ENTIDADE','CO_ENTIDADE','TP_DEPENDENCIA']
+    info_cols = ['NU_ANO_CENSO', 'NO_UF','SG_UF','CO_UF','NO_MUNICIPIO','CO_MUNICIPIO','NO_ENTIDADE','CO_ENTIDADE','TP_DEPENDENCIA', 'TP_LOCALIZACAO']
 
     indicadores_cols = [
         'IN_AGUA_REDE_PUBLICA',
